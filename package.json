@@ -4,6 +4,7 @@
   "description": "In this two-day sprint you will be building a [Trello](https://trello.com/) clone. Trello is a popular application for managing tasks and projects, often used in agile software development. We will probably use Trello in our own project later in the course so please sign up with Trello now and explore its functionality.",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src",
     "precommit": "npm run lint"
@@ -12,10 +13,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
     "eslint": "^3.17.0",
     "eslint-plugin-jsx": "0.0.2",
     "eslint-plugin-react": "^6.10.0",
-    "husky": "^0.13.2"
+    "husky": "^0.13.2",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
     "react": "^15.4.2",
