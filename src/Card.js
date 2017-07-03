@@ -6,7 +6,8 @@ class Card extends React.Component {
         return (
             <div className='card'>
                 <div className='card-content'>
-                    <Comment title={this.props.title}/>
+                    {this.props.title}
+                    <Comment data={this.props.comments}/>
                 </div>
             </div>
         )

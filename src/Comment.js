@@ -5,9 +5,9 @@ class Comment extends React.Component {
         return (
             <div className="field">
                 <h3>{this.props.title}</h3>
-                <p className="control">
-                    <textarea classNAme="textarea" placeholder="Enter"></textarea>
-                </p>
+                {Object.keys(this.props.data).map((elem) => {
+                    return (<p> {this.props.data[elem]} </p>);
+                })}
             </div>
         );
     }

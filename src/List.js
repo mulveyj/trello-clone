@@ -4,11 +4,14 @@ import Card from './Card';
 class List extends React.Component {
     render() {
         return (
-            <div className='box'>
-                <h1>List</h1>
-                <Card title="New Thing To Do"/>
-                <Card />
-                <Card />
+            <div className='column'>
+                <div className='box'>
+                    <h1>{this.props.title}</h1>
+                    {Object.keys(this.props.cards).map((elem) => {
+                        if (this.props.cards[elem].listID === this.props.listID)
+                        return <Card title={this.props.cards[elem].cardTitle} comments={this.props.cards[elem].comments}/>;
+                    })}
+                </div>
             </div>
         )
     }
