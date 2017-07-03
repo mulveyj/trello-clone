@@ -6,7 +6,7 @@ class List extends React.Component {
         return (
             <div className='box'>
                 <h1>List</h1>
-                <Card />
+                <Card title="New Thing To Do"/>
                 <Card />
                 <Card />
             </div>
