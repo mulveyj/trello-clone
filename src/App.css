@@ -1,3 +1,11 @@
- .nav {
+ .container {
     background-color: rgb(0,121,191);
+}
+
+body {
+    background-color: rgb(0,121,191);
+}
+
+.nav {
+    background-color: rgb(0, 103, 163);
 }

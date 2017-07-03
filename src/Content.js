@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './List';
+import './App.css';
 
 class Content extends React.Component {
     constructor (props) {
