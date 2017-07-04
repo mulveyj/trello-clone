@@ -1,5 +1,6 @@
 import React from 'react';
 import Comment from './Comment';
+import PropTypes from 'prop-types';
 
 class Card extends React.Component {
     render() {
@@ -13,5 +14,10 @@ class Card extends React.Component {
         )
     }
 }
+
+Card.propTypes = {
+    title: PropTypes.string.isRequired,
+    comments:PropTypes.object.isRequired
+};
 
 export default Card;

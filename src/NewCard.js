@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class NewCard extends React.Component {
     render() {
         return (
             <div className='card'>
                 <div className='card-content'>
-                    {this.props.title}
                     <form onSubmit={this.props.addCard} className='field is grouped'>
                         <label className='label'>New Card</label>
                         <p className='control'>
@@ -20,5 +20,11 @@ class NewCard extends React.Component {
         )
     }
 }
+
+NewCard.propTypes = {
+    addCard: PropTypes.func.isRequired,
+    cardText:PropTypes.string.isRequired,
+    cancelCard: PropTypes.func.isRequired
+};
 
 export default NewCard;

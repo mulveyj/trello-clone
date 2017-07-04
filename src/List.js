@@ -1,6 +1,8 @@
 import React from 'react';
 import Card from './Card';
 import NewCard from './NewCard';
+import NewList from './NewList';
+import PropTypes from 'prop-types';
 
 class List extends React.Component {
     constructor(props) {
@@ -21,7 +23,7 @@ class List extends React.Component {
         //     newCardText:text
         // });
         // call addCard 
-        console.dir(this);
+        // console.dir(this);
         this.props.addCardText(text);
         this.setState({
             addNew: false,
@@ -40,12 +42,13 @@ class List extends React.Component {
                     })}
                     <div className='block'>
                         {(this.state.addNew === true) ? 
-                            <NewCard cancelCard={this.cancelCard} 
-                                cardText={this.state.newCardText }addCard={this.handleNewCard}/> :
-                            <a className='button is-link' onClick={this.addCard}>Add a card...</a>
+                            <NewCard 
+                            cancelCard={this.cancelCard} 
+                                cardText={this.state.newCardText } 
+                                addCard={this.handleNewCard}/> :
+                            <a className='button is-link' onClick={this.addCard}>Add a Card...</a>
                         }
                     </div>
-
                 </div>
             </div>
         )

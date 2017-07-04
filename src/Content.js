@@ -2,6 +2,7 @@ import React from 'react';
 import List from './List';
 import uuid from 'uuid/v1';
 import './App.css';
+import NewList from './NewList';
 
 class Content extends React.Component {
     constructor (props) {
@@ -21,9 +22,13 @@ class Content extends React.Component {
                     comments:{'1':'All done', '2':'Took a while'}},
                 '4':{cardID:'4', cardTitle:'Implement Functionality', listID:'2',
                     comments:{'1':'Tired now', '2':'Bit bored'}}
-            }
+            },
+            addNewList: false
         };
-        // this.addCardToList = this.addCardToList.bind(this);
+        this.displayNewListBox = this.displayNewListBox.bind(this);
+        this.handleNewList = this.handleNewList.bind(this);
+        this.cancelList = this.cancelList.bind(this);
+        // this.addListToContent = this.addListToContent.bind(this);
     }
     render() {
         return (
@@ -37,27 +42,50 @@ class Content extends React.Component {
                                             cards={this.state.cards}
                                             addCardText={this.addCardToList.bind(this, listID)}/>;
                             })}
-                        </div>
+                            <div className='column'>
+                                    {(this.state.addNewList === true)
+                                        ? <NewList   cancelList={this.cancelList} 
+                                                    addList={this.handleNewList}/> 
+                                        : <a className='button is-info' onClick={this.displayNewListBox}>Add a List...</a>
+                                    }
+                            </div>
                     </div>
+                </div>
             </section>
         );
     }
-    createCardID () {
+    createID () {
         return uuid();
     }
     addCardToList (id, text) {
-        console.log(id);
         var newCards = Object.assign({}, this.state.cards);
-        const newID = this.createCardID();
-        console.log(newID);
-        // const text = e.target.children[1].children[0].value;
-        console.log(text);
+        const newID = this.createID();
         newCards[newID] = {cardID:newID, cardTitle:text, listID:id, comments:{}};
-        console.log(newCards, typeof newCards);
         this.setState({
             cards:newCards
         });
 
+    }
+    displayNewListBox() {
+        this.setState({
+            addNewList: true
+        });
+    }
+    handleNewList(e) {
+        e.preventDefault();
+        const title = e.target.children[1].children[0].value;
+        const newID = this.createID();
+        const newLists = Object.assign({}, this.state.lists);
+        newLists[newID] = {listID:newID, listTitle:title};
+        this.setState({
+            lists:newLists,
+            addNewList:false
+        });
+    } 
+    cancelList () {
+        this.setState({
+            addNewList: false
+        });
     }
 }
 

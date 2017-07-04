@@ -1,5 +1,4 @@
 import React from 'react';
-
 import NavBar from './NavBar';
 import TitleBar from './TitleBar';
 import Content from './Content';
@@ -17,5 +16,6 @@ class App extends React.Component {
         );
     }
 }
+
 
 export default App;

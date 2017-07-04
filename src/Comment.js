@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Comment extends React.Component {
     render() {
@@ -11,6 +12,11 @@ class Comment extends React.Component {
             </div>
         );
     }
+}
+
+Comment.propTypes = {
+    title: PropTypes.string.isRequired,
+    data: PropTypes.object.isRequired
 }
 
 export default Comment;
