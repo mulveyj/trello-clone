@@ -16,13 +16,7 @@ class List extends React.Component {
     }
     handleNewCard (e) {
         e.preventDefault();
-        // get data from event
         const text = e.target.children[1].children[0].value;
-        // this.setState({
-        //     newCardText:text
-        // });
-        // call addCard 
-        // console.dir(this);
         this.props.addCardText(text);
         this.setState({
             addNew: false,
@@ -36,8 +30,8 @@ class List extends React.Component {
                     <h1>{this.props.title}</h1>
                     {Object.keys(this.props.cards).map((elem) => {
                         if (this.props.cards[elem].listID === this.props.listID)
-                            return <Card title={this.props.cards[elem].cardTitle} 
-                                        comments={this.props.cards[elem].comments}/>;
+                            return <Card cardData={this.props.cards[elem]}
+                                        showModal={this.props.showModal}/>;
                     })}
                     <div className='block'>
                         {(this.state.addNew === true) ? 
@@ -64,7 +58,8 @@ List.propTypes = {
     addCardText: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
     cards: PropTypes.object.isRequired,
-    listID: PropTypes.string.isRequired
+    listID: PropTypes.string.isRequired,
+    showModal:PropTypes.func
 };
 
 export default List;

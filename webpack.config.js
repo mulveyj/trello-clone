@@ -12,6 +12,7 @@ module.exports = {
         filename: 'bundle.js',
         path: PATHS.public
     },
+    devtool: 'cheap-eval-source-map',
     module: {
         rules: [
             {
