@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './List';
+import uuid from 'uuid/v1';
 import './App.css';
 
 class Content extends React.Component {
@@ -22,6 +23,7 @@ class Content extends React.Component {
                     comments:{'1':'Tired now', '2':'Bit bored'}}
             }
         };
+        // this.addCardToList = this.addCardToList.bind(this);
     }
     render() {
         return (
@@ -29,14 +31,33 @@ class Content extends React.Component {
                 <div className='container'>
                     <div className='columns'>
                             {Object.keys(this.state.lists).map((elem) => {
-                               return <List title={this.state.lists[elem].listTitle}
-                                            listID={this.state.lists[elem].listID}
-                                            cards={this.state.cards}/>;
+                                const {listID, listTitle} = this.state.lists[elem];
+                               return <List title={listTitle}
+                                            listID={listID}
+                                            cards={this.state.cards}
+                                            addCardText={this.addCardToList.bind(this, listID)}/>;
                             })}
                         </div>
                     </div>
             </section>
-        )
+        );
+    }
+    createCardID () {
+        return uuid();
+    }
+    addCardToList (id, text) {
+        console.log(id);
+        var newCards = Object.assign({}, this.state.cards);
+        const newID = this.createCardID();
+        console.log(newID);
+        // const text = e.target.children[1].children[0].value;
+        console.log(text);
+        newCards[newID] = {cardID:newID, cardTitle:text, listID:id, comments:{}};
+        console.log(newCards, typeof newCards);
+        this.setState({
+            cards:newCards
+        });
+
     }
 }
 

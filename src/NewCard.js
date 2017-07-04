@@ -6,15 +6,15 @@ class NewCard extends React.Component {
             <div className='card'>
                 <div className='card-content'>
                     {this.props.title}
-                    <div className='field'>
+                    <form onSubmit={this.props.addCard} className='field is grouped'>
                         <label className='label'>New Card</label>
                         <p className='control'>
-                            <textarea className='textarea' placeholder='Enter text'>
-                            </textarea>
+                            <textarea id='TESTTESTTEST' className='textarea' placeholder='Enter text'>
+                            {this.props.cardText}</textarea>
                         </p>
-                    </div>
-                    <button className='button is-success'>Add</button>
-                    <a className='delete is-medium' onClick={this.props.cancelCard}></a>
+                        <button className='button is-success'>Add</button>
+                        <a className='delete is-medium' onClick={this.props.cancelCard}></a>
+                    </form>
                 </div>
             </div>
         )

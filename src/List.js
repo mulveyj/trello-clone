@@ -6,11 +6,27 @@ class List extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            addNew: false
+            addNew: false,
+            newCardText: ''
         }
-        this.AddCard = this.AddCard.bind(this);
-        this.CancelCard = this.CancelCard.bind(this);
-
+        this.addCard = this.addCard.bind(this);
+        this.cancelCard = this.cancelCard.bind(this);
+        this.handleNewCard = this.handleNewCard.bind(this);
+    }
+    handleNewCard (e) {
+        e.preventDefault();
+        // get data from event
+        const text = e.target.children[1].children[0].value;
+        // this.setState({
+        //     newCardText:text
+        // });
+        // call addCard 
+        console.dir(this);
+        this.props.addCardText(text);
+        this.setState({
+            addNew: false,
+            newCardText: ''
+        });
     }
     render() {
         return (
@@ -19,11 +35,14 @@ class List extends React.Component {
                     <h1>{this.props.title}</h1>
                     {Object.keys(this.props.cards).map((elem) => {
                         if (this.props.cards[elem].listID === this.props.listID)
-                            return <Card title={this.props.cards[elem].cardTitle} comments={this.props.cards[elem].comments} />;
+                            return <Card title={this.props.cards[elem].cardTitle} 
+                                        comments={this.props.cards[elem].comments}/>;
                     })}
                     <div className='block'>
-                        {(this.state.addNew === true) ? <NewCard cancelCard={this.CancelCard} /> :
-                            <a className='button is-link' onClick={this.AddCard}>Add a card...</a>
+                        {(this.state.addNew === true) ? 
+                            <NewCard cancelCard={this.cancelCard} 
+                                cardText={this.state.newCardText }addCard={this.handleNewCard}/> :
+                            <a className='button is-link' onClick={this.addCard}>Add a card...</a>
                         }
                     </div>
 
@@ -31,10 +50,10 @@ class List extends React.Component {
             </div>
         )
     }
-    AddCard() {
+    addCard() {
         this.setState({ addNew: true })
     }
-    CancelCard() {
+    cancelCard() {
         this.setState({ addNew: false })
     }
 }
