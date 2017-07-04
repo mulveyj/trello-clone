@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from './Card';
 import NewCard from './NewCard';
-import NewList from './NewList';
 import PropTypes from 'prop-types';
 
 class List extends React.Component {
@@ -60,5 +59,12 @@ class List extends React.Component {
         this.setState({ addNew: false })
     }
 }
+
+List.propTypes = {
+    addCardText: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+    cards: PropTypes.object.isRequired,
+    listID: PropTypes.string.isRequired
+};
 
 export default List;
